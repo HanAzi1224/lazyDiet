@@ -8,6 +8,7 @@ WORKDIR /app
 
 # package 설치(락파일 기준 재현성 높음)
 COPY package*.json ./
+ENV PUPPETEER_SKIP_DOWNLOAD=true
 RUN npm ci --omit=dev --no-audit --no-fund
 
 # 앱 소스
