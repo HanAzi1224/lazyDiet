@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "wonday-api",
+      "name": "lazydiet-api",
       "script": "./server/app.js",
       "instances": "1",
       "watch": false,

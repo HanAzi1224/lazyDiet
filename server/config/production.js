@@ -34,9 +34,9 @@ module.exports = {
     accessKeyId: process.env.ACCESS_KEY_ID,
     secretAccessKey: process.env.SECRET_ACCESS_KEY,
     s3: {
-      host: 'https://s3-ap-northeast-2.amazonaws.com',
-      bucket: 'wonday',
-      frontPath: 'https://s3.ap-northeast-2.amazonaws.com/wonday',
+      host: 'https://lazy-diet.s3.ap-northeast-2.amazonaws.com',
+      bucket: 'lazy-diet',
+      frontPath: 'https://lazy-diet.s3.ap-northeast-2.amazonaws.com/files/',
       originUserImage: 'original',
       thumbnailUserImage: 'thumbnails'
     }

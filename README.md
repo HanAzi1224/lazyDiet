@@ -1,4 +1,4 @@
-# wonday-api
+# lazyDiet-api
 
 ## Development
 
@@ -11,7 +11,7 @@ npm run dev
 
 `main` 브랜치에 push되면 GitHub Actions(`.github/workflows/deploy.yml`)가 다음을 수행합니다.
 
-1. S3(`s3://hn3ehn-env/wonday/.env`)에서 `.env`를 내려받아 이미지에 포함
+1. S3(`s3://hn3ehn-env/lazyDiet/.env`)에서 `.env`를 내려받아 이미지에 포함
 2. Docker 이미지를 빌드해 ECR(`161363670536.dkr.ecr.ap-northeast-2.amazonaws.com/lazy_diet`)로 push
 3. EC2(`52.78.109.98`)에 SSH로 접속해 `docker-compose-prod.yml` 기준으로 컨테이너 재기동
 4. `nginx-proxy` + `letsencrypt-nginx-proxy-companion`이 `https://api.lazydiet.hnsehn.com`으로 HTTPS 서빙 (인증서 자동 발급/갱신)

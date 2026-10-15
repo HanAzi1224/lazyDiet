@@ -41,7 +41,7 @@ module.exports.s3UploadBase64 = async (options) => {
       ACL: 'public-read'
     }
     await s3.putObject(params).promise()
-    return `${config.aws.s3.host}/${config.aws.s3.bucket}/${options.key}`
+    return `${config.aws.s3.host}/${options.key}`
   } catch (err) {
     throw err
   }
