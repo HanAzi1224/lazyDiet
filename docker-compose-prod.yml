@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   wonday-api:
-    image: 161363670536.dkr.ecr.ap-northeast-2.amazonaws.com/wonday:latest
+    image: 161363670536.dkr.ecr.ap-northeast-2.amazonaws.com/lazy_diet:latest
     restart: always
     logging:
       driver: json-file

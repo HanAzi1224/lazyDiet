@@ -7,7 +7,7 @@ on:
 
 env:
   AWS_REGION: ap-northeast-2
-  ECR_REPOSITORY: 161363670536.dkr.ecr.ap-northeast-2.amazonaws.com/wonday
+  ECR_REPOSITORY: 161363670536.dkr.ecr.ap-northeast-2.amazonaws.com/lazy_diet
   ENV_S3_PATH: s3://hn3ehn-env/wonday/.env
   EC2_HOST: 3.39.231.52
   EC2_USER: ubuntu
