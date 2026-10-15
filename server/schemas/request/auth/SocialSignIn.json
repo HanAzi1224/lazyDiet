@@ -1,0 +1,57 @@
+{
+  "type": "object",
+  "properties": {
+    "provider": {
+      "type": "string",
+      "enum": ["kakao", "naver", "google", "apple"]
+    },
+    "access_token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authorization_code": {
+      "type": "string",
+      "minLength": 1
+    },
+    "redirect_uri": {
+      "type": "string",
+      "minLength": 1
+    },
+    "oauth_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "identity_token": {
+      "type": "string",
+      "minLength": 1
+    },
+    "display_name": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "fcm_token": {
+      "type": "string",
+      "maxLength": 255
+    }
+  },
+  "required": ["provider"],
+  "allOf": [
+    {
+      "if": {"required": ["authorization_code"]},
+      "then": {"required": ["redirect_uri"]}
+    },
+    {
+      "if": {
+        "properties": {"provider": {"const": "naver"}},
+        "required": ["provider", "authorization_code"]
+      },
+      "then": {"required": ["oauth_state"]}
+    }
+  ],
+  "additionalProperties": false,
+  "example": {
+    "provider": "kakao",
+    "access_token": "provider_access_token",
+    "fcm_token": "fcm_token"
+  }
+}

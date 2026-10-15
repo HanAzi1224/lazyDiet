@@ -1,0 +1,99 @@
+:root {
+  color-scheme: light;
+  --ink: #252a22;
+  --muted: #747d6f;
+  --line: #e2ebdc;
+  --paper: #f5faf2;
+  --leaf: #5a9b43;
+  --leaf-dark: #477936;
+  --white: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  min-width: 320px;
+  min-height: 100svh;
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+}
+
+button, a { font: inherit; }
+
+.page-shell {
+  display: grid;
+  min-height: 100svh;
+  place-items: center;
+  padding: 0 24px;
+}
+
+.login-panel {
+  display: grid;
+  width: min(100%, 430px);
+  min-height: 100svh;
+  align-items: center;
+  padding: max(40px, env(safe-area-inset-top)) 28px max(32px, env(safe-area-inset-bottom));
+}
+
+.login-content { width: 100%; }
+.brand-header { margin-bottom: 42px; text-align: center; }
+.brand-name { display: flex; align-items: baseline; justify-content: center; gap: 3px; margin: 0; line-height: 1; white-space: nowrap; }
+.brand-core { color: var(--leaf-dark); font-size: 58px; font-weight: 800; }
+.brand-meaning { display: flex; justify-content: center; gap: 8px; margin: 15px 0 0; color: var(--ink); font-size: 15px; }
+.brand-meaning span { white-space: nowrap; }
+.brand-meaning small { color: var(--muted); font-size: 11px; }
+.login-heading { margin: 0 0 20px; color: var(--ink); font-size: 18px; font-weight: 500; }
+.login-heading strong { color: var(--leaf); font-size: 30px; font-weight: 800; }
+.provider-list { display: grid; gap: 10px; }
+
+.provider-button {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.provider-button:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgb(33 39 25 / 12%); }
+.provider-button:focus-visible, .logout-button:focus-visible { outline: 3px solid #91a96d; outline-offset: 3px; }
+.provider-symbol { position: absolute; left: 18px; display: grid; width: 22px; height: 22px; place-items: center; font-family: Arial, sans-serif; font-size: 17px; font-weight: 700; }
+.provider-kakao { color: #1d1d1d; background: #fee500; }
+.kakao-symbol { border-radius: 50%; color: #fee500; background: #1d1d1d; font-size: 12px; }
+.provider-naver { color: #fff; background: #03c75a; }
+.naver-symbol { font-size: 19px; }
+.provider-google { border-color: #dadbd7; color: #30312f; background: #fff; }
+.google-symbol { color: #4285f4; }
+.provider-apple { color: #fff; background: #171815; }
+.apple-symbol { font-size: 23px; }
+
+.status-message { min-height: 20px; margin: 14px 0 0; color: #9b4638; font-size: 13px; line-height: 1.6; }
+.status-message:empty { min-height: 0; }
+.account-summary { display: flex; align-items: center; gap: 12px; margin-top: 12px; padding: 14px; border: 1px solid var(--line); background: #f8f9f3; }
+.account-summary[hidden] { display: none; }
+.account-check { display: grid; width: 34px; height: 34px; flex: 0 0 auto; place-items: center; border-radius: 50%; color: white; background: var(--leaf); }
+.account-label, .account-name { margin: 0; }
+.account-label { color: var(--muted); font-size: 11px; }
+.account-name { margin-top: 3px; font-size: 14px; font-weight: 600; }
+.logout-button { margin-left: auto; padding: 7px 10px; border: 0; color: var(--leaf-dark); background: transparent; cursor: pointer; font-size: 12px; }
+
+@media (max-width: 480px) {
+  .page-shell { padding: 0; }
+  .login-panel { padding-right: 26px; padding-left: 26px; }
+  .brand-header { margin-bottom: 42px; }
+  .brand-core { font-size: 52px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}

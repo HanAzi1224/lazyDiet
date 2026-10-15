@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f5faf2" />
+    <meta name="description" content="대식가, 대충 식단 가능" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://appleid.cdn-apple.com" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/web-config.js"></script>
+    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js" integrity="sha384-OL+ylM/iuPLtW5U3XcvLSGhE8JzReKDank5InqlHGWPhb4140/yrBw0bg0y7+C9J" crossorigin="anonymous" defer></script>
+    <script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" defer></script>
+    <script src="/app.js" defer></script>
+    <title>대식가</title>
+  </head>
+  <body>
+    <main class="page-shell">
+      <section class="login-panel" aria-labelledby="brand-title">
+        <div class="login-content">
+          <header class="brand-header">
+            <h1 class="brand-name" id="brand-title" aria-label="대식가">
+              <span class="brand-core">대</span><span class="brand-core">식</span><span class="brand-core">가</span>
+            </h1>
+            <p class="brand-meaning" aria-label="대충 식단 가능">
+              <span>대<small>충</small></span>
+              <span>식<small>단</small></span>
+              <span>가<small>능</small></span>
+            </p>
+          </header>
+
+          <h2 class="login-heading"><strong>5초</strong>면 회원가입 끝</h2>
+
+          <div class="provider-list" aria-label="로그인 수단">
+            <button class="provider-button provider-kakao" data-provider="kakao" type="button">
+              <span class="provider-symbol kakao-symbol" aria-hidden="true">K</span>
+              <span>카카오로 로그인</span>
+            </button>
+            <button class="provider-button provider-naver" data-provider="naver" type="button">
+              <span class="provider-symbol naver-symbol" aria-hidden="true">N</span>
+              <span>네이버로 로그인</span>
+            </button>
+            <button class="provider-button provider-google" data-provider="google" type="button">
+              <span class="provider-symbol google-symbol" aria-hidden="true">G</span>
+              <span>Google로 로그인</span>
+            </button>
+            <button class="provider-button provider-apple" data-provider="apple" type="button">
+              <span class="provider-symbol apple-symbol" aria-hidden="true">&#63743;</span>
+              <span>Apple로 로그인</span>
+            </button>
+          </div>
+
+          <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+
+          <section class="account-summary" id="account-summary" hidden>
+            <span class="account-check" aria-hidden="true">✓</span>
+            <div>
+              <p class="account-label">로그인 완료</p>
+              <p class="account-name" id="account-name"></p>
+            </div>
+            <button class="logout-button" id="logout-button" type="button">로그아웃</button>
+          </section>
+
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

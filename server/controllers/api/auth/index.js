@@ -16,6 +16,7 @@
 // Import dependencies for API routing and authentication controllers
 const ApiRouter = require('../../default').ApiRouter
 const ctrl = require('./auth-ctrl')
+const socialAuthCtrl = require('./social-auth-ctrl')
 
 // User registration endpoint - allows new users to create an account
 module.exports.signUp = new ApiRouter({
@@ -49,6 +50,23 @@ module.exports.signIn = new ApiRouter({
     404: {description: '사용자를 찾을 수 없습니다.'}
   },
   handler: ctrl.signIn
+})
+
+module.exports.socialSignIn = new ApiRouter({
+  name: 'social',
+  method: 'post',
+  schema: 'request/auth/SocialSignIn',
+  summary: 'SNS 로그인',
+  tags: ['인증'],
+  isPublic: true,
+  apiType: ['user'],
+  responses: {
+    200: {description: 'Success'},
+    400: {description: 'Invalid data'},
+    401: {description: '유효하지 않은 SNS 토큰입니다.'},
+    502: {description: 'SNS 사용자 정보를 확인할 수 없습니다.'}
+  },
+  handler: socialAuthCtrl.signIn
 })
 
 // User ID availability check - verifies if a username is available for registration

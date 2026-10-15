@@ -24,7 +24,7 @@ Users.init(
     },
     user_phone: {
       type: DataTypes.STRING(255),
-      allowNull: false,
+      allowNull: true,
       comment: '휴대폰번호'
     },
     fcm_token: {

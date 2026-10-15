@@ -37,8 +37,16 @@ app.use(
 const contentSecurityPolicy = {
   directives: {
     'default-src': ["'self'"],
-    'script-src': ["'self'", 'https://cdn.iamport.kr', "'unsafe-inline'"],
-    'style-src': ["'self'", "'unsafe-inline'"],
+    'script-src': [
+      "'self'",
+      'https://cdn.iamport.kr',
+      'https://appleid.cdn-apple.com',
+      'https://t1.kakaocdn.net',
+      "'unsafe-inline'"
+    ],
+    'style-src': ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
+    'font-src': ["'self'", 'https://fonts.gstatic.com', 'data:'],
+    'img-src': ["'self'", 'https://images.unsplash.com', 'data:'],
     'connect-src': ["'self'", 'https:', 'https://service.iamport.kr', 'https://cdn.iamport.kr'],
     'frame-src': ['https://service.iamport.kr']
   }
@@ -58,6 +66,20 @@ app.use(
   })
 )
 app.use('/results', express.static(path.join(__dirname, '../../results')))
+app.get('/web-config.js', (req, res) => {
+  res.type('application/javascript').send(
+    `window.LAZYDIET_CONFIG = ${JSON.stringify({
+      apiBaseUrl:
+        process.env.PUBLIC_API_BASE_URL ||
+        (process.env.NODE_ENV === 'production' ? 'https://api.lazydiet.hnsehn.com' : ''),
+      kakaoJavascriptKey: process.env.KAKAO_JAVASCRIPT_KEY || '',
+      naverClientId: process.env.NAVER_CLIENT_ID || '',
+      googleClientId: process.env.GOOGLE_CLIENT_ID || '',
+      appleClientId: process.env.APPLE_CLIENT_ID || ''
+    })};`
+  )
+})
+app.use(express.static(path.join(__dirname, '../public')))
 
 routes(app, morgan)
 

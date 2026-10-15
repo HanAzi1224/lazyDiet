@@ -11,9 +11,9 @@ services:
     depends_on:
       - redis
     environment:
-      - VIRTUAL_HOST=api.lazydiet.hnsehn.com
+      - VIRTUAL_HOST=lazydiet.hnsehn.com,api.lazydiet.hnsehn.com
       - VIRTUAL_PORT=4000
-      - LETSENCRYPT_HOST=api.lazydiet.hnsehn.com
+      - LETSENCRYPT_HOST=lazydiet.hnsehn.com,api.lazydiet.hnsehn.com
       - LETSENCRYPT_EMAIL=saehyun9906@gmail.com
       - TZ=Asia/Seoul
       - NODE_ENV=production
