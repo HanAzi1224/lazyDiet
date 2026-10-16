@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "meal_date": {"type": "string", "format": "date-time"},
+    "meal_type": {"type": "string", "enum": ["breakfast", "lunch", "snack", "dinner"]}
+  },
+  "required": ["meal_date", "meal_type"],
+  "additionalProperties": false
+}

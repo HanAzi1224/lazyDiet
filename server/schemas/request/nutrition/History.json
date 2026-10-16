@@ -1,0 +1,8 @@
+{
+  "type": "object",
+  "properties": {
+    "period": {"type": "string", "enum": ["week", "month", "all"], "default": "week"},
+    "date": {"type": "string", "format": "date-time"}
+  },
+  "additionalProperties": false
+}

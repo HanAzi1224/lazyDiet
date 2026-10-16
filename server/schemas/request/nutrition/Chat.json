@@ -1,0 +1,9 @@
+{
+  "type": "object",
+  "properties": {
+    "message": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "date": {"type": "string", "format": "date-time"}
+  },
+  "required": ["message"],
+  "additionalProperties": false
+}

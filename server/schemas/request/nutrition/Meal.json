@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "meal_date": {"type": "string", "format": "date-time"},
+    "meal_type": {"type": "string", "enum": ["breakfast", "lunch", "snack", "dinner"]},
+    "description": {"type": "string", "minLength": 1, "maxLength": 1000},
+    "calories": {"type": "number", "minimum": 0, "maximum": 20000},
+    "protein_g": {"type": "number", "minimum": 0, "maximum": 1000},
+    "carbs_g": {"type": "number", "minimum": 0, "maximum": 2000},
+    "fat_g": {"type": "number", "minimum": 0, "maximum": 1000},
+    "fiber_g": {"type": "number", "minimum": 0, "maximum": 500, "default": 0},
+    "sodium_mg": {"type": "number", "minimum": 0, "maximum": 100000, "default": 0}
+  },
+  "required": ["meal_date", "meal_type", "description", "calories", "protein_g", "carbs_g", "fat_g"],
+  "additionalProperties": false
+}

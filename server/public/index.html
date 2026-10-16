@@ -1,68 +1,387 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#f5faf2" />
-    <meta name="description" content="대식가, 대충 식단 가능" />
+    <meta name="theme-color" content="#f6f7f1" />
+    <meta name="description" content="대식가, 내 식단을 가볍게 기록하고 분석해요" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://appleid.cdn-apple.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="/styles.css" />
     <script src="/web-config.js"></script>
-    <script src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js" integrity="sha384-OL+ylM/iuPLtW5U3XcvLSGhE8JzReKDank5InqlHGWPhb4140/yrBw0bg0y7+C9J" crossorigin="anonymous" defer></script>
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.8.1/kakao.min.js"
+      integrity="sha384-OL+ylM/iuPLtW5U3XcvLSGhE8JzReKDank5InqlHGWPhb4140/yrBw0bg0y7+C9J"
+      crossorigin="anonymous"
+      defer
+    ></script>
     <script src="https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js" defer></script>
     <script src="/app.js" defer></script>
     <title>대식가</title>
   </head>
   <body>
-    <main class="page-shell">
-      <section class="login-panel" aria-labelledby="brand-title">
-        <div class="login-content">
-          <header class="brand-header">
-            <h1 class="brand-name" id="brand-title" aria-label="대식가">
-              <span class="brand-core">대</span><span class="brand-core">식</span><span class="brand-core">가</span>
-            </h1>
-            <p class="brand-meaning" aria-label="대충 식단 가능">
-              <span>대<small>충</small></span>
-              <span>식<small>단</small></span>
-              <span>가<small>능</small></span>
-            </p>
-          </header>
-
-          <h2 class="login-heading"><strong>5초</strong>면 회원가입 끝</h2>
-
-          <div class="provider-list" aria-label="로그인 수단">
-            <button class="provider-button provider-kakao" data-provider="kakao" type="button">
-              <span class="provider-symbol kakao-symbol" aria-hidden="true">K</span>
-              <span>카카오로 로그인</span>
-            </button>
-            <button class="provider-button provider-naver" data-provider="naver" type="button">
-              <span class="provider-symbol naver-symbol" aria-hidden="true">N</span>
-              <span>네이버로 로그인</span>
-            </button>
-            <button class="provider-button provider-google" data-provider="google" type="button">
-              <span class="provider-symbol google-symbol" aria-hidden="true">G</span>
-              <span>Google로 로그인</span>
-            </button>
-            <button class="provider-button provider-apple" data-provider="apple" type="button">
-              <span class="provider-symbol apple-symbol" aria-hidden="true">&#63743;</span>
-              <span>Apple로 로그인</span>
-            </button>
-          </div>
-
-          <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
-
-          <section class="account-summary" id="account-summary" hidden>
-            <span class="account-check" aria-hidden="true">✓</span>
-            <div>
-              <p class="account-label">로그인 완료</p>
-              <p class="account-name" id="account-name"></p>
+    <main>
+      <section class="login-view" id="login-view" aria-labelledby="brand-title">
+        <div class="login-brand">
+          <a class="brand-lockup" href="/" aria-label="대식가 홈">
+            <span class="brand-mark" aria-hidden="true">ㄷ</span>
+            <span class="brand-word">대식가</span>
+          </a>
+          <div class="login-story">
+            <p class="eyebrow">EAT WELL, WITHOUT THE MATH</p>
+            <h1 id="brand-title">잘 먹는 일,<br /><em>가볍게 기록해요.</em></h1>
+            <p class="story-copy">한 끼씩 쌓이는 기록으로<br />오늘의 균형을 함께 찾아요.</p>
+            <div class="story-stats" aria-label="대식가 기능">
+              <span><b>01</b> 식사 기록</span>
+              <span><b>02</b> 영양 균형</span>
+              <span><b>03</b> 주간 리포트</span>
             </div>
+          </div>
+          <p class="login-footnote">YOUR EVERYDAY FOOD JOURNAL</p>
+        </div>
+        <div class="login-side">
+          <div class="login-box">
+            <p class="eyebrow">WELCOME TO DAE-SIK-GA</p>
+            <h2>오늘부터 시작해요</h2>
+            <p class="login-caption">간편 로그인으로 내 식단을 관리하세요.</p>
+            <div class="provider-list" aria-label="로그인 수단">
+              <button class="provider-button provider-kakao" data-provider="kakao" type="button">
+                <span class="provider-symbol kakao-symbol" aria-hidden="true">K</span>
+                <span>카카오로 계속하기</span>
+              </button>
+              <button class="provider-button provider-naver" data-provider="naver" type="button">
+                <span class="provider-symbol naver-symbol" aria-hidden="true">N</span>
+                <span>네이버로 계속하기</span>
+              </button>
+              <button class="provider-button provider-google" data-provider="google" type="button">
+                <span class="provider-symbol google-symbol" aria-hidden="true">G</span>
+                <span>Google로 계속하기</span>
+              </button>
+              <button class="provider-button provider-apple" data-provider="apple" type="button">
+                <span class="provider-symbol apple-symbol" aria-hidden="true">&#63743;</span>
+                <span>Apple로 계속하기</span>
+              </button>
+            </div>
+            <div class="login-divider"><span>또는 아이디로 로그인</span></div>
+            <form class="credential-form" id="credential-form">
+              <label for="login-user-id">아이디</label>
+              <input
+                id="login-user-id"
+                name="user_id"
+                type="text"
+                autocomplete="username"
+                placeholder="아이디 입력"
+                required
+              />
+              <label for="login-user-password">비밀번호</label>
+              <input
+                id="login-user-password"
+                name="user_pwd"
+                type="password"
+                autocomplete="current-password"
+                placeholder="비밀번호 입력"
+                required
+              />
+              <button class="credential-submit" type="submit">로그인</button>
+            </form>
+            <p class="status-message" id="status-message" role="status" aria-live="polite"></p>
+            <p class="login-terms">계속하면 서비스 이용에 필요한 계정 정보를 확인합니다.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="app-view" id="app-view" hidden>
+        <header class="app-header">
+          <a class="brand-lockup app-brand" href="#today" aria-label="대식가 오늘">
+            <span class="brand-mark" aria-hidden="true">ㄷ</span>
+            <span class="brand-word">대식가</span>
+          </a>
+          <nav class="main-nav" aria-label="주요 메뉴">
+            <button class="nav-button is-active" data-view="today" type="button">오늘</button>
+            <button class="nav-button" data-view="history" type="button">기록 분석</button>
+          </nav>
+          <div class="header-user">
+            <span class="user-name" id="user-name"></span>
+            <button class="profile-button" id="open-profile" type="button" aria-label="프로필 설정" title="프로필 설정">
+              ⚙
+            </button>
             <button class="logout-button" id="logout-button" type="button">로그아웃</button>
+          </div>
+        </header>
+
+        <div class="app-main">
+          <section class="onboarding" id="onboarding" hidden>
+            <div class="onboarding-copy">
+              <p class="eyebrow">YOUR BASELINE</p>
+              <h1>맞춤 목표를<br />먼저 정해볼까요?</h1>
+              <p>신체 정보와 주간 운동 횟수를 알려주면<br />하루 권장 에너지와 영양 목표를 계산해요.</p>
+            </div>
+            <form class="profile-form onboarding-form" id="profile-form">
+              <div class="form-heading"><span>01 / 기본 정보</span><span>약 1분</span></div>
+              <div class="form-grid">
+                <label
+                  >성별
+                  <select name="sex" required>
+                    <option value="female">여성</option>
+                    <option value="male">남성</option>
+                    <option value="other">기타</option>
+                  </select>
+                </label>
+                <label
+                  >나이 <span class="unit">세</span
+                  ><input name="age" type="number" min="13" max="100" placeholder="27" required
+                /></label>
+                <label
+                  >키 <span class="unit">cm</span
+                  ><input name="height_cm" type="number" min="100" max="250" step="0.1" placeholder="165" required
+                /></label>
+                <label
+                  >체중 <span class="unit">kg</span
+                  ><input name="weight_kg" type="number" min="25" max="350" step="0.1" placeholder="60" required
+                /></label>
+                <label class="wide-field"
+                  >주 몇 회 운동하나요?
+                  <select name="exercise_days_per_week" id="exercise-days" required></select>
+                </label>
+                <label class="wide-field"
+                  >지금의 목표
+                  <select name="goal" id="profile-goal" required></select>
+                </label>
+              </div>
+              <input name="race" type="hidden" value="asian" />
+              <button class="primary-button" type="submit">내 목표 계산하기 <span aria-hidden="true">→</span></button>
+              <p class="form-error" id="profile-error" role="alert"></p>
+            </form>
           </section>
 
+          <section class="today-view" id="today-view">
+            <div class="view-heading">
+              <div>
+                <p class="eyebrow" id="today-date"></p>
+                <h1>오늘의 식단 <span class="heading-spark" aria-hidden="true">✳</span></h1>
+                <p class="view-subtitle">잘 챙긴 한 끼가 오늘의 균형을 만들어요.</p>
+              </div>
+              <button class="outline-button" id="history-shortcut" type="button">
+                기록 분석 보기 <span aria-hidden="true">↗</span>
+              </button>
+            </div>
+
+            <div class="dashboard-grid">
+              <div class="dashboard-primary">
+                <section class="energy-panel" aria-labelledby="energy-title">
+                  <div class="energy-copy">
+                    <p class="section-kicker">TODAY'S ENERGY</p>
+                    <h2 id="energy-title">하루 에너지</h2>
+                    <p class="energy-note" id="energy-note">목표를 계산하고 있어요.</p>
+                    <div class="energy-numbers">
+                      <strong id="calories-consumed">0</strong><span> / <b id="calories-target">0</b> kcal</span>
+                    </div>
+                    <div class="energy-legend">
+                      <span class="legend-dot"></span><span id="calories-remaining">목표를 설정해 주세요</span>
+                    </div>
+                  </div>
+                  <div class="calorie-ring" id="calorie-ring" role="img" aria-label="칼로리 달성률 0%">
+                    <div class="ring-inner"><strong id="calories-percent">0%</strong><span>달성</span></div>
+                  </div>
+                </section>
+
+                <section class="nutrient-panel" aria-labelledby="nutrient-title">
+                  <div class="section-heading">
+                    <div>
+                      <p class="section-kicker">DAILY BALANCE</p>
+                      <h2 id="nutrient-title">영양 밸런스</h2>
+                    </div>
+                    <span class="small-note">목표 대비 섭취량</span>
+                  </div>
+                  <div class="nutrient-list" id="nutrient-list"></div>
+                </section>
+
+                <section class="meal-panel" aria-labelledby="meal-title">
+                  <div class="section-heading">
+                    <div>
+                      <p class="section-kicker">MEAL LOG</p>
+                      <h2 id="meal-title">오늘 먹은 것</h2>
+                    </div>
+                    <button class="add-meal-button" id="add-meal" type="button">
+                      <span aria-hidden="true">＋</span> 식사 기록
+                    </button>
+                  </div>
+                  <div class="meal-list" id="meal-list"></div>
+                </section>
+              </div>
+
+              <aside class="coach-panel" aria-labelledby="coach-title">
+                <div class="coach-header">
+                  <span class="coach-avatar" aria-hidden="true">대</span>
+                  <div>
+                    <p class="section-kicker">FOOD COMPANION</p>
+                    <h2 id="coach-title">식단 코치</h2>
+                  </div>
+                  <span class="online-indicator" title="기록 분석 연결됨"></span>
+                </div>
+                <p class="coach-caption">오늘의 기록을 바탕으로 균형을 같이 살펴봐요.</p>
+                <div class="chat-messages" id="chat-messages" aria-live="polite"></div>
+                <div class="prompt-suggestions" id="prompt-suggestions">
+                  <button type="button" data-prompt="오늘 영양 달성률을 요약해줘">오늘 영양 요약</button>
+                  <button type="button" data-prompt="남은 칼로리가 얼마나 돼?">남은 칼로리</button>
+                </div>
+                <form class="chat-form" id="chat-form">
+                  <label class="visually-hidden" for="chat-input">식단 코치에게 메시지</label>
+                  <input
+                    id="chat-input"
+                    name="message"
+                    maxlength="1000"
+                    placeholder="식단에 대해 물어보세요"
+                    required
+                  />
+                  <button type="submit" aria-label="메시지 보내기" title="메시지 보내기">↑</button>
+                </form>
+                <p class="coach-disclaimer">현재는 저장된 식사 기록을 기준으로 답변해요.</p>
+              </aside>
+            </div>
+          </section>
+
+          <section class="history-view" id="history-view" hidden>
+            <div class="view-heading">
+              <div>
+                <p class="eyebrow">YOUR FOOD JOURNAL</p>
+                <h1>기록 분석</h1>
+                <p class="view-subtitle">쌓인 식사에서 나만의 패턴을 발견해요.</p>
+              </div>
+              <div class="period-switch" role="group" aria-label="분석 기간">
+                <button class="is-active" data-period="week" type="button">주간</button>
+                <button data-period="month" type="button">월간</button>
+                <button data-period="all" type="button">전체</button>
+              </div>
+            </div>
+            <div class="history-summary" id="history-summary"></div>
+            <section class="analysis-panel">
+              <div class="section-heading">
+                <div>
+                  <p class="section-kicker">PATTERN NOTES</p>
+                  <h2>이번 기간 살펴보기</h2>
+                </div>
+              </div>
+              <ul class="insight-list" id="insight-list"></ul>
+            </section>
+            <section class="history-days">
+              <div class="section-heading">
+                <div>
+                  <p class="section-kicker">DAILY LOG</p>
+                  <h2>날짜별 기록</h2>
+                </div>
+              </div>
+              <div id="history-days-list"></div>
+            </section>
+          </section>
+          <div class="toast" id="toast" role="status" aria-live="polite"></div>
         </div>
+
+        <dialog class="app-dialog" id="meal-dialog">
+          <form class="dialog-form" id="meal-form">
+            <div class="dialog-heading">
+              <div>
+                <p class="eyebrow">MEAL LOG</p>
+                <h2>식사 기록</h2>
+              </div>
+              <button class="icon-close" type="button" data-close-dialog aria-label="닫기">×</button>
+            </div>
+            <label>날짜<input name="meal_date" type="date" required /></label>
+            <label
+              >끼니<select name="meal_type" required>
+                <option value="breakfast">아침</option>
+                <option value="lunch">점심</option>
+                <option value="snack">간식</option>
+                <option value="dinner">저녁</option>
+              </select></label
+            >
+            <label
+              >무엇을 먹었나요?<input
+                name="description"
+                maxlength="1000"
+                placeholder="예: 현미밥, 계란말이, 김치"
+                required
+            /></label>
+            <div class="form-grid nutrient-inputs">
+              <label
+                >칼로리 <span class="unit">kcal</span
+                ><input name="calories" type="number" min="0" max="20000" step="1" required
+              /></label>
+              <label
+                >단백질 <span class="unit">g</span
+                ><input name="protein_g" type="number" min="0" max="1000" step="0.1" required
+              /></label>
+              <label
+                >탄수화물 <span class="unit">g</span
+                ><input name="carbs_g" type="number" min="0" max="2000" step="0.1" required
+              /></label>
+              <label
+                >지방 <span class="unit">g</span
+                ><input name="fat_g" type="number" min="0" max="1000" step="0.1" required
+              /></label>
+              <label
+                >식이섬유 <span class="unit">g</span
+                ><input name="fiber_g" type="number" min="0" max="500" step="0.1" value="0"
+              /></label>
+              <label
+                >나트륨 <span class="unit">mg</span
+                ><input name="sodium_mg" type="number" min="0" max="100000" step="1" value="0"
+              /></label>
+            </div>
+            <p class="form-hint">영양 정보는 식품 포장이나 메뉴 정보를 참고해 입력해 주세요.</p>
+            <p class="form-error" id="meal-error" role="alert"></p>
+            <div class="dialog-actions">
+              <button class="text-button" id="delete-meal" type="button" hidden>기록 삭제</button
+              ><button class="primary-button" type="submit">저장하기</button>
+            </div>
+          </form>
+        </dialog>
+
+        <dialog class="app-dialog profile-dialog" id="profile-dialog">
+          <form class="dialog-form" id="edit-profile-form">
+            <div class="dialog-heading">
+              <div>
+                <p class="eyebrow">YOUR BASELINE</p>
+                <h2>내 목표 설정</h2>
+              </div>
+              <button class="icon-close" type="button" data-close-dialog aria-label="닫기">×</button>
+            </div>
+            <div class="form-grid">
+              <label
+                >성별<select name="sex" required>
+                  <option value="female">여성</option>
+                  <option value="male">남성</option>
+                  <option value="other">기타</option>
+                </select></label
+              >
+              <label
+                >나이 <span class="unit">세</span><input name="age" type="number" min="13" max="100" required
+              /></label>
+              <label
+                >키 <span class="unit">cm</span
+                ><input name="height_cm" type="number" min="100" max="250" step="0.1" required
+              /></label>
+              <label
+                >체중 <span class="unit">kg</span
+                ><input name="weight_kg" type="number" min="25" max="350" step="0.1" required
+              /></label>
+              <label class="wide-field"
+                >주 운동 횟수<select name="exercise_days_per_week" class="exercise-days-edit" required></select
+              ></label>
+              <label class="wide-field">목표<select name="goal" class="profile-goal-edit" required></select></label>
+            </div>
+            <input name="race" type="hidden" value="asian" />
+            <p class="form-error" id="edit-profile-error" role="alert"></p>
+            <button class="primary-button" type="submit">목표 업데이트</button>
+          </form>
+        </dialog>
       </section>
     </main>
   </body>
